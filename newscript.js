@@ -108,4 +108,7 @@ function sortearCarta() {
 function showPlayerCard() {
 	let divPlayCard = document.getElementById('player-card');
 	divPlayCard.style.backgroundImage = `url(${playerCard.imagem})`;
+	let divPlayName = document.querySelector("#player-card-name");	
+	let playName = `<p>${playerCard.nome}</p>`;
+	divPlayName.innerHTML = playName;
 }
