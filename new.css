@@ -1,0 +1,212 @@
+*{
+	margin: 0;
+	padding: 0; 	
+}
+
+body {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 250px 650px 200px 150px;
+	grid-template-areas:"banner banner banner banner"
+						"left left right right"
+						"result number score next"
+						"footer footer footer footer";
+}
+
+.banner {
+	background: #F5F5F5;
+	grid-area: banner;
+	text-align: center;
+}
+
+.banner h1 {
+	font-family: 'Old Standard TT', Serif;
+    font-weight: 700;
+    font-size: 60px;
+    margin: 50px 0 20px 0;
+}
+
+.banner p {
+	font-family: 'Rubik', Sans-Serif;
+    font-size: 20px;
+}
+
+.left-side {
+	background: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url("https://images.pexels.com/photos/7046718/pexels-photo-7046718.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500") no-repeat center;
+	background-size: cover;
+	grid-area: left;
+}
+
+.position {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.card {
+	width: 400px;
+	height: 500px;
+	background: url("https://i.pinimg.com/originals/34/3d/1c/343d1c8dce080ecebabb6738c696c8a8.png") no-repeat center;
+	background-size: contain;
+	position: relative;
+	z-index: 2;
+}
+
+.card-image {
+	width: 50px;
+	height: 50px;
+	top: 60px;
+	left: 50px;
+	width: 300px;
+    height: 218px;
+    background: transparent;
+    position: absolute;
+    z-index: 3;
+}
+
+.play-button {
+	width: 350px;
+	margin-top: 10px;
+	border-radius: 6px;
+	font-family: 'Rubik', Sans-Serif;
+    font-size: 20px;
+    color:#000;
+    padding: 3px 3px;
+    height: 50px;
+    border: 2px solid #000;
+    background: #E5E1BB;
+    font-weight: 700;
+}
+
+.board {
+	width: 270px;
+	border-radius: 6px;
+	font-family: 'Rubik', Sans-Serif;
+    font-size: 20px;
+    color:#fff;
+    height: 50px;
+    border: 2px solid #000;
+    background: #B50D4E;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result, 
+.number-cards,
+.score,
+.next {
+	background: #F5F5F5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+}
+
+
+.rigth-side {
+	background: linear-gradient(-225deg, rgba(30,30,30,0.6) 30%, rgba(46,46,46,0.5) 80%), url("https://images.pexels.com/photos/7046708/pexels-photo-7046708.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500") no-repeat center;
+	background-size: cover;
+	grid-area: right;
+}
+
+.card {
+	width: 400px;
+	height: 500px;
+	background: url("https://i.pinimg.com/originals/34/3d/1c/343d1c8dce080ecebabb6738c696c8a8.png") no-repeat center;
+	background-size: contain;
+}
+
+.result {
+	grid-area: result;
+}
+
+.number-cards {
+	grid-area: number;
+}
+
+.score {
+	grid-area: score;
+}
+
+.next {
+	grid-area: next;
+}
+
+footer {
+	grid-area: footer;
+	background:#4F5553;
+	color: #fff;
+}
+
+.footer-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+}
+
+.footer-content h3 {
+	font-size: 20px;
+	font-weight: 400;
+	text-transform: capitalize;
+	line-height: 2;	
+	font-family: 'Architects Daughter', cursive;
+}
+
+.footer-content p {
+	margin: 10px auto;
+	line-height: 20px;
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.socials {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 1rem 0;
+}
+
+.socials li {
+	margin: 0 10px;
+}
+
+.socials a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.socials a i {
+	font-size: 1.1rem;
+	transition: color .4s ease;
+}
+
+.socials a:hover i {
+	color:#B37D4E;
+}
+
+.footer-bottom {
+	background: #000;
+	padding: 15px 0;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.footer-bottom p {
+	font-size: 14px;
+	word-spacing: 2px;
+	text-transform: capitalize;
+}
+
+.footer-bottom span {
+	text-transform: uppercase;
+	opacity: .4;
+	font-weight: 200;
+}
