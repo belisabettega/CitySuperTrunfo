@@ -97,8 +97,6 @@ function actualScore() {
 function sortearCarta() {
 	let divPlayerCard = document.getElementById('div-player-card');
 	divPlayerCard.style.display = "block";
-	let divComputerCard = document.getElementById('div-computer-card');
-	divComputerCard.style.display = "block";
 	let numCompCard = parseInt(Math.random() * carts.length);
 	computerCard = carts[numCompCard];
 	carts.splice(numCompCard, 1);
@@ -151,6 +149,8 @@ function showPlayerCard() {
 }
 
 function jogar() {
+	let divComputerCard = document.getElementById('div-computer-card');
+	divComputerCard.style.display = "block"; 
 	let divResultado = document.getElementById("result");
 	let atribSelec = document.getElementById("selec-att").value;
 
@@ -164,7 +164,6 @@ function jogar() {
 		htmlResultado = '<p class="resultado-final">Empatou</p>';
 	}
 
-	showCompCard();
 	divResultado.innerHTML = htmlResultado;
 	actualScore();
 	actualNumCards();
@@ -182,9 +181,12 @@ function jogar() {
 		document.getElementById('btnSortear').disabled = true;
 		document.getElementById('btnNextGame').disabled = false;
 		document.getElementById('selec-att').disabled = true;
-	}
+		showCompCard();
 
+	}
 }
+
+
 
 function showCompCard () { 
 	let divPlayComp = document.getElementById('computer-card');
