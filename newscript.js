@@ -68,19 +68,22 @@ let playerCard;
 let computerCard;
 let carts = [cartaFloripa, cartaSp, cartaLondres, cartaToronto, cartaSantos, cartaNovaIorque];
 
-console.log(carts.length);
-
 let playerPoints = 0;
 let computerPoints = 0;
 
+hideCards();
 actualNumCards();
 actualScore();
+
+document.getElementById('btnSortear').disabled = false;
+document.getElementById('selec-att').disabled = true;
+document.getElementById('btnNextGame').disabled = true;
+
 
 function actualNumCards() {
 	let divNumCards = document.getElementById('num-cards');
 	let html = "Cartas no jogo: " + carts.length;
 	divNumCards.innerHTML = html;
-	console.log(html);
 }
 
 function actualScore() {
@@ -88,9 +91,14 @@ function actualScore() {
 	let html = "Player " + playerPoints + " / Computer " + computerPoints;
 
 	divScore.innerHTML = html;
+	document.getElementById('btnNextGame').disabled = false;
 }
 
 function sortearCarta() {
+	let divPlayerCard = document.getElementById('div-player-card');
+	divPlayerCard.style.display = "block";
+	let divComputerCard = document.getElementById('div-computer-card');
+	divComputerCard.style.display = "block";
 	let numCompCard = parseInt(Math.random() * carts.length);
 	computerCard = carts[numCompCard];
 	carts.splice(numCompCard, 1);
@@ -99,10 +107,8 @@ function sortearCarta() {
 	playerCard = carts[numPlaCard];
 	carts.splice(numPlaCard, 1);
 
-	document.getElementById('btnSortear').disabled = true;
-	document.getElementById('btnJogar').disabled = false;
-
 	showPlayerCard();
+	document.getElementById('selec-att').disabled = false;
 }
 
 function showPlayerCard() {
@@ -117,10 +123,9 @@ function showPlayerCard() {
 	let playAttrib = createAttrib();
 	divPlayAttrib.innerHTML = playAttrib; 
 
-function createAttrib() {
+	function createAttrib() {
 
 		const attrName = Object.entries(playerCard.atributos);
-		console.log(attrName);
 
 		let totalAtri = "";
 
@@ -143,14 +148,6 @@ function createAttrib() {
 		} 
 		return totalAtri;
 	}
-
-		let buttonsId = document.getElementsByTagName("button");
-		for (let i=0; i < buttonsId.length;i++) {
-		buttonsId[i].onclick = function() {
-			console.log(this.value);
-		}
-
-	}	
 }
 
 function jogar() {
@@ -158,18 +155,35 @@ function jogar() {
 	let atribSelec = document.getElementById("selec-att").value;
 
 	if (playerCard.atributos[atribSelec] > computerCard.atributos[atribSelec]) {
-		console.log("venceu");
 		htmlResultado = '<p class="resultado-final">Venceu</p>';
+		playerPoints++;
 	} else if (playerCard.atributos[atribSelec] < computerCard.atributos[atribSelec]) {
-		console.log("perdeu");
 		htmlResultado = '<p class="resultado-final">Perdeu</p>';
+		computerPoints++;
 	} else {
-		console.log("empate");
 		htmlResultado = '<p class="resultado-final">Empatou</p>';
 	}
 
 	showCompCard();
 	divResultado.innerHTML = htmlResultado;
+	actualScore();
+	actualNumCards();
+
+	if (carts.length == 0) {
+		alert ("Fim de jogo!");
+		if (playerPoints > computerPoints) {
+			alert ("Você ganhou da máquina!");
+		} else if (computerPoints > playerPoints) {
+			alert("A máquina ganhou!");
+		} else {
+			alert("Empatou!");
+		}
+	} else {
+		document.getElementById('btnSortear').disabled = true;
+		document.getElementById('btnNextGame').disabled = false;
+		document.getElementById('selec-att').disabled = true;
+	}
+
 }
 
 function showCompCard () { 
@@ -212,17 +226,25 @@ function showCompCard () {
 		} 
 		return totalAtri;
 	}
-	let buttonsId = document.getElementsByTagName("button");
-		for (let i=0; i < buttonsId.length;i++) {
-		buttonsId[i].onclick = function() {
-			console.log(this.value);
-			window.value = this.value;
-		}
-
-	}	
-	
 }
 
+let NextGameButton = document.getElementById('btnNextGame');
+NextGameButton.onclick = function nextGame() {
+	hideCards();
+	document.getElementById('btnSortear').disabled = false;
+	document.getElementById('selec-att').disabled = true;
+	document.getElementById('btnNextGame').disabled = true;
+
+	let divResultadoo = document.getElementById('result');
+	divResultadoo.innerHTML = "";
+}
+
+function hideCards () {
+	let divPlayerCards = document.getElementById('div-player-card');
+	divPlayerCards.style.display = "none";
+	let divComputerCards = document.getElementById('div-computer-card');
+	divComputerCards.style.display = "none";
+}
 
 
 

@@ -14,7 +14,7 @@
 		<p>Só vem nas habilidades e vê se o computador te ganha!</p>
 	</section>
 	<section class="left-side position">
-		<div class="card">
+		<div class="card" id="div-player-card">
 			<div class="card-name" id="player-card-name"></div>
 			<div id="player-card" class="card-image"></div>
 			<div id="player-attrib" class="card-attrib"></div>
@@ -26,23 +26,17 @@
 						<option value="beleza">Beleza</option>
 						<option value="natureza">Natureza</option>
 						<option value="servicos">Serviços</option>
-					</select>	
+					</select>
 				</form>
 			</div>
 		</div>
 		<button id="btnSortear" class="play-button" onclick="sortearCarta()">Sortear Carta</button>
 	</section>
 	<section class="rigth-side position">
-		<div class="card">
+		<div class="card" id="div-computer-card">
 			<div class="card-name" id="computer-card-name"></div>
 			<div id="computer-card" class="card-image"></div>
 			<div id="comp-attrib" class="card-attrib"></div>
-			<!--	
-			<button class="player-button seguranca">Segurança</button>
-			<button class="player-button beleza">Beleza</button>
-			<button class="player-button natureza">Natureza</button>
-			<button class="player-button servicos">Serviços</button>
-		-->
 		</div>
 		<div id="btnJogar" class="play-button">Olhe abaixo para ver se ganhou!</div>
 	</section>
@@ -56,7 +50,7 @@
 		<div class="board" id="score"></div>
 	</section>
 	<section class="next">
-		<dir class="board"></dir>
+		<button id="btnNextGame" class="board">Jogar de novo!</button>
 	</section>
 	<footer>
 		<div class="footer-content">
