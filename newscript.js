@@ -108,7 +108,126 @@ function sortearCarta() {
 function showPlayerCard() {
 	let divPlayCard = document.getElementById('player-card');
 	divPlayCard.style.backgroundImage = `url(${playerCard.imagem})`;
+	divPlayCard.style.backgroundSize = "cover";
 	let divPlayName = document.querySelector("#player-card-name");	
 	let playName = `<p>${playerCard.nome}</p>`;
 	divPlayName.innerHTML = playName;
+
+	let divPlayAttrib = document.querySelector("#player-attrib");
+	let playAttrib = createAttrib();
+	divPlayAttrib.innerHTML = playAttrib; 
+
+function createAttrib() {
+
+		const attrName = Object.entries(playerCard.atributos);
+		console.log(attrName);
+
+		let totalAtri = "";
+
+		for (let i = 0; i < attrName.length; i++) {
+		totalAtri += "<button type='button' class='player-button seguranca' id='button-one' value='" + attrName[i][0] +  "'>" + attrName[i][0] + " : " + attrName[i][1] + "</button>";
+		let attrOne = attrName[i][0];
+		console.log(attrOne);
+		i++;
+		totalAtri += "<button type='button' class='player-button beleza' id='button-two' value='" + attrName[i][0] +  "'>" + attrName[i][0] + " : " + attrName[i][1]  + "</button>";
+		let attrTwo = attrName[i][0];
+		console.log(attrTwo);
+		i++;
+		totalAtri += "<button type='button' class='player-button natureza' id='button-three' value='" + attrName[i][0] +  "'>" +  attrName[i][0] + " : " + attrName[i][1] + "</button>";
+		let attrThree = attrName[i][0];
+		console.log(attrThree);
+		i++;
+		totalAtri += "<button type='button' class='player-button servicos' id='button-four' onclick='jogar()' value='" + attrName[i][0] +  "'>" +  attrName[i][0] + " : " + attrName[i][1]  + "</button>";
+		let attrFour = attrName[i][0];
+		console.log(attrFour);
+		} 
+		return totalAtri;
+	}
+
+		let buttonsId = document.getElementsByTagName("button");
+		for (let i=0; i < buttonsId.length;i++) {
+		buttonsId[i].onclick = function() {
+			console.log(this.value);
+		}
+
+	}	
 }
+
+function jogar() {
+	let divResultado = document.getElementById("result");
+	let atribSelec = document.getElementById("selec-att").value;
+
+	if (playerCard.atributos[atribSelec] > computerCard.atributos[atribSelec]) {
+		console.log("venceu");
+		htmlResultado = '<p class="resultado-final">Venceu</p>';
+	} else if (playerCard.atributos[atribSelec] < computerCard.atributos[atribSelec]) {
+		console.log("perdeu");
+		htmlResultado = '<p class="resultado-final">Perdeu</p>';
+	} else {
+		console.log("empate");
+		htmlResultado = '<p class="resultado-final">Empatou</p>';
+	}
+
+	showCompCard();
+	divResultado.innerHTML = htmlResultado;
+}
+
+function showCompCard () { 
+	let divPlayComp = document.getElementById('computer-card');
+
+	divPlayComp.style.backgroundImage = `url(${computerCard.imagem})`;
+	divPlayComp.style.backgroundSize = "cover";
+	let divCompName = document.querySelector("#computer-card-name");	
+	let CompName = `<p>${computerCard.nome}</p>`;
+	divCompName.innerHTML = CompName;
+
+	let divCompAttrib = document.querySelector("#comp-attrib");
+	let CompAttrib = createAttrib();
+	divCompAttrib.innerHTML = CompAttrib;
+
+
+	function createAttrib() {
+
+		const attrName = Object.entries(computerCard.atributos);
+		console.log(attrName);
+
+		let totalAtri = "";
+
+		for (let i = 0; i < attrName.length; i++) {
+		totalAtri += "<button type='button' class='player-button seguranca' id='button-one' value='" + attrName[i][0] +  "'>" + attrName[i][0] + " : " + attrName[i][1] + "</button>";
+		let attrOne = attrName[i][0];
+		console.log(attrOne);
+		i++;
+		totalAtri += "<button type='button' class='player-button beleza' id='button-two' value='" + attrName[i][0] +  "'>" + attrName[i][0] + " : " + attrName[i][1]  + "</button>";
+		let attrTwo = attrName[i][0];
+		console.log(attrTwo);
+		i++;
+		totalAtri += "<button type='button' class='player-button natureza' id='button-three' value='" + attrName[i][0] +  "'>" +  attrName[i][0] + " : " + attrName[i][1] + "</button>";
+		let attrThree = attrName[i][0];
+		console.log(attrThree);
+		i++;
+		totalAtri += "<button type='button' class='player-button servicos' id='button-four' onclick='jogar()' value='" + attrName[i][0] +  "'>" +  attrName[i][0] + " : " + attrName[i][1]  + "</button>";
+		let attrFour = attrName[i][0];
+		console.log(attrFour);
+		} 
+		return totalAtri;
+	}
+	let buttonsId = document.getElementsByTagName("button");
+		for (let i=0; i < buttonsId.length;i++) {
+		buttonsId[i].onclick = function() {
+			console.log(this.value);
+			window.value = this.value;
+		}
+
+	}	
+	
+}
+
+
+
+
+
+
+
+
+
